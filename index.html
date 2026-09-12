@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aakash Chouhan | Portfolio</title>
+    <title>Aakash Chouhan | AI & ML Engineering Portfolio</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
@@ -64,7 +64,7 @@
             transform: translateX(-50%);
             width: 90%;
             max-width: 1100px;
-            background: rgba(11, 15, 25, 0.75);
+            background: rgba(11, 15, 25, 0.85);
             backdrop-filter: blur(16px);
             border: 1px solid var(--surface-border);
             border-radius: 99px;
@@ -102,7 +102,7 @@
             color: var(--primary);
         }
 
-        /* Hero */
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -137,7 +137,7 @@
         .hero p {
             font-size: 1.25rem;
             color: var(--text-sub);
-            max-width: 700px;
+            max-width: 750px;
             margin-bottom: 2.5rem;
         }
 
@@ -168,7 +168,7 @@
             color: var(--text-sub);
         }
 
-        /* Interactive Buttons */
+        /* Buttons */
         .btn {
             padding: 0.9rem 1.8rem;
             border-radius: 12px;
@@ -204,7 +204,7 @@
             border-color: var(--primary);
         }
 
-        /* Filterable Skills */
+        /* Skills Section */
         .section-header {
             margin-bottom: 3rem;
         }
@@ -283,7 +283,7 @@
             font-size: 0.8rem;
         }
 
-        /* Detailed Projects & Interactive Modals */
+        /* Projects Section */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -328,6 +328,13 @@
             margin-bottom: 1.5rem;
         }
 
+        .card-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
         .read-more {
             color: var(--primary);
             font-weight: 600;
@@ -336,10 +343,19 @@
             align-items: center;
             gap: 0.4rem;
             cursor: pointer;
-            margin-top: auto;
         }
 
-        /* Modal styling */
+        .repo-link {
+            color: var(--text-sub);
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
+        .repo-link:hover {
+            color: var(--primary);
+        }
+
+        /* Modals */
         .modal {
             display: none;
             position: fixed;
@@ -376,12 +392,11 @@
             cursor: pointer;
         }
 
-        /* Sections spacing */
         section {
             padding: 8rem 0;
         }
 
-        /* Publication Banner */
+        /* Publication Card */
         .pub-card {
             background: linear-gradient(135deg, var(--surface-1), var(--surface-2));
             border: 1px solid var(--surface-border);
@@ -442,7 +457,7 @@
 
     <canvas id="canvas-bg"></canvas>
 
-    <!-- Floating Glass Navbar -->
+    <!-- Navigation -->
     <nav>
         <a href="#" class="logo">&lt;Aakash.AI /&gt;</a>
         <ul class="nav-links">
@@ -450,7 +465,7 @@
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#publications">Research</a></li>
-            <li><a href="#education">Timeline</a></li>
+            <li><a href="#education">Education</a></li>
         </ul>
     </nav>
 
@@ -460,89 +475,111 @@
         <section id="about" class="hero">
             <div>
                 <div class="hero-badge"><i class="fas fa-microchip"></i> M.Tech Researcher & AI Engineer</div>
-                <h1>AAKASH CHOUHAN[cite: 1]</h1>
-                <p>Architecting secure, decentralized machine learning systems and intelligent AI solutions. Focused on Privacy-Preserving Federated Learning, Generative AI (RAG, LLM Workflows), and MLOps[cite: 1].</p>
+                <h1>AAKASH CHOUHAN</h1>
+                <p>Architecting secure, decentralized machine learning systems, privacy-preserving IoT solutions, and Generative AI frameworks. Specializing in Federated Learning, Natural Language Processing, MLOps, and Cyber Security.</p>
                 
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="https://github.com/Aakash001Chouhan" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> GitHub Profile[cite: 1]</a>
-                    <a href="https://linkedin.com/in/aakash-chouhan" target="_blank" class="btn btn-secondary"><i class="fab fa-linkedin"></i> LinkedIn[cite: 1]</a>
-                    <a href="mailto:aakashchouhan0802@gmail.com" class="btn btn-secondary"><i class="fas fa-envelope"></i> Contact Me[cite: 1]</a>
+                    <a href="https://github.com/Aakash001Chouhan" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> GitHub Profile</a>
+                    <a href="https://www.linkedin.com/in/aakash-chouhan/" target="_blank" class="btn btn-secondary"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="mailto:aakashchouhan0802@gmail.com" class="btn btn-secondary"><i class="fas fa-envelope"></i> Email Me</a>
                 </div>
 
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-number">8.23</div>
-                        <div class="stat-label">M.Tech CGPA[cite: 1]</div>
+                        <div class="stat-label">M.Tech CGPA</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number">1+</div>
-                        <div class="stat-label">Published Papers[cite: 1]</div>
+                        <div class="stat-label">Published Research</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number">3+</div>
-                        <div class="stat-label">Core Technical Degrees[cite: 1]</div>
+                        <div class="stat-label">Technical Credentials</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Interactive Skills Section -->
+        <!-- Filterable Skills Section -->
         <section id="skills">
             <div class="section-header">
-                <h2 class="section-title">Technical Expertise</h2>
-                <p style="color: var(--text-sub);">Filter skills by domain specialization</p>
+                <h2 class="section-title">Technical Skills & Expertise</h2>
+                <p style="color: var(--text-sub);">Filter skills by domain</p>
             </div>
 
             <div class="filter-container">
                 <button class="filter-btn active" onclick="filterSkills('all')">All Skills</button>
-                <button class="filter-btn" onclick="filterSkills('ai')">Gen AI & LLM</button>
-                <button class="filter-btn" onclick="filterSkills('ml')">ML / Deep Learning</button>
+                <button class="filter-btn" onclick="filterSkills('ai')">Gen AI & NLP</button>
+                <button class="filter-btn" onclick="filterSkills('ml')">ML, Security & Edge</button>
+                <button class="filter-btn" onclick="filterSkills('bigdata')">Big Data & IoT</button>
                 <button class="filter-btn" onclick="filterSkills('ops')">MLOps & Cloud</button>
             </div>
 
             <div class="skills-container">
                 
                 <div class="skill-box" data-category="ai">
-                    <h3><i class="fas fa-robot"></i> Generative AI & Prompting</h3>
+                    <h3><i class="fas fa-robot"></i> Generative AI & NLP</h3>
                     <div class="tags">
-                        <span class="tag">Prompt Engineering[cite: 1]</span>
-                        <span class="tag">Chain-of-Thought[cite: 1]</span>
-                        <span class="tag">Few-Shot Prompting[cite: 1]</span>
-                        <span class="tag">RAG Frameworks[cite: 1]</span>
-                        <span class="tag">LLM Integration[cite: 1]</span>
+                        <span class="tag">Prompt Engineering</span>
+                        <span class="tag">Natural Language Processing (NLP)</span>
+                        <span class="tag">RAG Architectures</span>
+                        <span class="tag">LLM Integration</span>
+                        <span class="tag">Few-Shot / Chain-of-Thought</span>
                     </div>
                 </div>
 
                 <div class="skill-box" data-category="ml">
-                    <h3><i class="fas fa-shield-alt"></i> Privacy & Federated Learning</h3>
+                    <h3><i class="fas fa-shield-alt"></i> Cyber Security & Federated ML</h3>
                     <div class="tags">
-                        <span class="tag">Flower Framework[cite: 1]</span>
-                        <span class="tag">FedAvgM / FedProx[cite: 1]</span>
-                        <span class="tag">Non-IID Partitioning[cite: 1]</span>
-                        <span class="tag">Edge Security[cite: 1]</span>
+                        <span class="tag">Decentralized IDS</span>
+                        <span class="tag">Privacy-Preserving Architectures</span>
+                        <span class="tag">Flower Framework</span>
+                        <span class="tag">FedAvgM / FedProx</span>
+                        <span class="tag">Network Threat Mitigation</span>
+                    </div>
+                </div>
+
+                <div class="skill-box" data-category="bigdata">
+                    <h3><i class="fas fa-database"></i> Big Data & Analytics</h3>
+                    <div class="tags">
+                        <span class="tag">SQL Analytics</span>
+                        <span class="tag">Time-Series Forecasting</span>
+                        <span class="tag">Pandas & NumPy</span>
+                        <span class="tag">Feature Engineering</span>
+                        <span class="tag">Statistical Modeling</span>
+                    </div>
+                </div>
+
+                <div class="skill-box" data-category="bigdata">
+                    <h3><i class="fas fa-network-wired"></i> IoT & Embedded Systems</h3>
+                    <div class="tags">
+                        <span class="tag">Sensors & Microcontrollers</span>
+                        <span class="tag">Real-Time Control</span>
+                        <span class="tag">Edge Computing</span>
+                        <span class="tag">IoT Automation</span>
                     </div>
                 </div>
 
                 <div class="skill-box" data-category="ml">
-                    <h3><i class="fas fa-brain"></i> Deep Learning & Data</h3>
+                    <h3><i class="fas fa-brain"></i> Machine Learning & Computer Vision</h3>
                     <div class="tags">
-                        <span class="tag">PyTorch[cite: 1]</span>
-                        <span class="tag">TensorFlow[cite: 1]</span>
-                        <span class="tag">Scikit-Learn[cite: 1]</span>
-                        <span class="tag">OpenCV[cite: 1]</span>
-                        <span class="tag">Pandas / NumPy[cite: 1]</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">Scikit-Learn</span>
+                        <span class="tag">OpenCV</span>
+                        <span class="tag">Python / C</span>
                     </div>
                 </div>
 
                 <div class="skill-box" data-category="ops">
-                    <h3><i class="fas fa-cubes"></i> MLOps & Infrastructure</h3>
+                    <h3><i class="fas fa-cubes"></i> MLOps, Cloud & DevOps</h3>
                     <div class="tags">
-                        <span class="tag">Docker[cite: 1]</span>
-                        <span class="tag">AWS (EC2/S3)[cite: 1]</span>
-                        <span class="tag">Git[cite: 1]</span>
-                        <span class="tag">Linux[cite: 1]</span>
-                        <span class="tag">MongoDB[cite: 1]</span>
-                        <span class="tag">SQL[cite: 1]</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">AWS (EC2/S3)</span>
+                        <span class="tag">Git & Linux</span>
+                        <span class="tag">MongoDB & SQL</span>
+                        <span class="tag">Jupyter</span>
                     </div>
                 </div>
 
@@ -553,7 +590,7 @@
         <section id="projects">
             <div class="section-header">
                 <h2 class="section-title">Featured Projects</h2>
-                <p style="color: var(--text-sub);">Click "Explore Deep Dive" for technical specifications</p>
+                <p style="color: var(--text-sub);">Click "Explore Deep Dive" for detailed specs or the GitHub icon to view source code.</p>
             </div>
 
             <div class="projects-grid">
@@ -561,45 +598,68 @@
                 <div class="project-card">
                     <div>
                         <div class="project-type">Graduate Thesis Research</div>
-                        <h3>Privacy-Preserving RPL Intrusion Detection[cite: 1]</h3>
-                        <p>Decentralized Intrusion Detection System built for IoT edge devices operating under resource-constrained and routing-attack-vulnerable environments[cite: 1].</p>
+                        <h3>Privacy-Preserving RPL Intrusion Detection</h3>
+                        <p>Decentralized Intrusion Detection System built for IoT edge devices operating under severe routing attacks and non-IID data distributions.</p>
                     </div>
                     <div class="tags" style="margin-bottom: 1.5rem;">
-                        <span class="tag">PyTorch[cite: 1]</span>
-                        <span class="tag">Flower[cite: 1]</span>
-                        <span class="tag">IoT[cite: 1]</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">Flower</span>
+                        <span class="tag">IoT Security</span>
                     </div>
-                    <a class="read-more" onclick="openModal('modal1')">Explore Deep Dive <i class="fas fa-arrow-right"></i></a>
+                    <div class="card-actions">
+                        <a class="read-more" onclick="openModal('modal1')">Explore Deep Dive <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://github.com/Aakash001Chouhan/FL_INTRUSION_DETECTION_in_IOT" target="_blank" class="repo-link" title="View Source Code"><i class="fab fa-github"></i></a>
+                    </div>
                 </div>
 
                 <div class="project-card">
                     <div>
-                        <div class="project-type">Analytics & Modeling</div>
-                        <h3>Electricity Consumption Forecasting[cite: 1]</h3>
-                        <p>Time-series Machine Learning pipelines engineering forecasts for household and regional power consumption[cite: 1].</p>
+                        <div class="project-type">Generative AI & LLM</div>
+                        <h3>Personal AI Assistant</h3>
+                        <p>Intelligent personal assistant integrating Generative AI workflows, prompt engineering, and localized automation pipelines.</p>
                     </div>
                     <div class="tags" style="margin-bottom: 1.5rem;">
-                        <span class="tag">Python[cite: 1]</span>
-                        <span class="tag">Scikit-Learn[cite: 1]</span>
-                        <span class="tag">Pandas[cite: 1]</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">LLM</span>
+                        <span class="tag">Prompt Engineering</span>
                     </div>
-                    <a class="read-more" onclick="openModal('modal2')">Explore Deep Dive <i class="fas fa-arrow-right"></i></a>
+                    <div class="card-actions">
+                        <a class="read-more" onclick="openModal('modal2')">Explore Deep Dive <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://github.com/Aakash001Chouhan/personal-ai-assistant" target="_blank" class="repo-link" title="View Source Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <div class="project-type">Big Data & Time-Series</div>
+                        <h3>Electricity Consumption Forecasting</h3>
+                        <p>Multi-model machine learning framework engineering forecasts for regional and household power consumption trends.</p>
+                    </div>
+                    <div class="tags" style="margin-bottom: 1.5rem;">
+                        <span class="tag">Python</span>
+                        <span class="tag">Scikit-Learn</span>
+                        <span class="tag">Pandas</span>
+                    </div>
+                    <div class="card-actions">
+                        <a class="read-more" onclick="openModal('modal3')">Explore Deep Dive <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://github.com/Aakash001Chouhan/Predicting-Electricity-Consumption-Using-a-MultiModel-Machine-Learning-Framework" target="_blank" class="repo-link" title="View Source Code"><i class="fab fa-github"></i></a>
+                    </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- Publication Section -->
+        <!-- Publications -->
         <section id="publications">
             <div class="section-header">
-                <h2 class="section-title">Peer-Reviewed Publications</h2>
+                <h2 class="section-title">Research Publications</h2>
             </div>
             <div class="pub-card">
                 <div style="color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; margin-bottom: 0.5rem;">JOURNAL PUBLICATION</div>
-                <h3 style="font-size: 1.5rem; margin-bottom: 0.8rem;">Privacy-Preserving Intrusion Detection for IoT Networks Using Federated Learning[cite: 1]</h3>
-                <p style="color: var(--text-sub); margin-bottom: 1rem;"><strong>Authors:</strong> Aakash Chouhan, Dr. Mukul Shukla, Dr. Puja Gupta[cite: 1]</p>
+                <h3 style="font-size: 1.5rem; margin-bottom: 0.8rem;">Privacy-Preserving Intrusion Detection for IoT Networks Using Federated Learning</h3>
+                <p style="color: var(--text-sub); margin-bottom: 1rem;"><strong>Authors:</strong> Aakash Chouhan, Dr. Mukul Shukla, Dr. Puja Gupta</p>
                 <p style="font-size: 0.95rem; color: var(--text-main);">
-                    Published in the <em>International Journal for Multidisciplinary Research (IJFMR)</em>, Vol. 8, Issue 3 (May 10, 2026)[cite: 1]. Addresses zero-trust routing security across decentralized edge networks[cite: 1].
+                    Published in <em>International Journal for Multidisciplinary Research (IJFMR)</em>, Vol. 8, Issue 3 (May 10, 2026). Explores decentralized edge learning to prevent cyber attacks on resource-constrained IoT systems without centralizing data.
                 </p>
             </div>
         </section>
@@ -612,21 +672,21 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                 
                 <div style="background: var(--surface-1); border: 1px solid var(--surface-border); border-radius: 16px; padding: 2rem;">
-                    <h3 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-graduation-cap"></i> Academic Journey</h3>
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-graduation-cap"></i> Academic Background</h3>
                     
                     <div style="margin-bottom: 1.5rem;">
-                        <h4>M.Tech in Information Technology[cite: 1]</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-sub);">SGSITS, Indore (2024–2026) | CGPA: 8.23[cite: 1]</p>
+                        <h4>M.Tech in Information Technology</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-sub);">SGSITS, Indore (2024–2026) | CGPA: 8.23</p>
                     </div>
 
                     <div style="margin-bottom: 1.5rem;">
-                        <h4>B.Tech in Computer Science[cite: 1]</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-sub);">Medi-Caps University, Indore (2021–2024) | CGPA: 7.69[cite: 1]</p>
+                        <h4>B.Tech in Computer Science</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-sub);">Medi-Caps University, Indore (2021–2024) | CGPA: 7.69</p>
                     </div>
 
                     <div>
-                        <h4>Diploma in Electrical Engineering[cite: 1]</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-sub);">Shri Vaishnav Polytechnic College (2018–2021) | CGPA: 7.21[cite: 1]</p>
+                        <h4>Diploma in Electrical Engineering</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-sub);">Shri Vaishnav Polytechnic College (2018–2021) | CGPA: 7.21</p>
                     </div>
                 </div>
 
@@ -634,16 +694,16 @@
                     <h3 style="color: var(--accent); margin-bottom: 1rem;"><i class="fas fa-certificate"></i> Certifications</h3>
                     <ul style="list-style: none;">
                         <li style="margin-bottom: 1rem; border-bottom: 1px solid var(--surface-border); padding-bottom: 0.8rem;">
-                            <strong>Google Advanced Data Analytics[cite: 1]</strong>
-                            <div style="font-size: 0.85rem; color: var(--text-sub);">Coursera • ML & Advanced Python Statistical Modeling[cite: 1]</div>
+                            <strong>Google Advanced Data Analytics</strong>
+                            <div style="font-size: 0.85rem; color: var(--text-sub);">Coursera • ML & Advanced Python Statistical Analysis</div>
                         </li>
                         <li style="margin-bottom: 1rem; border-bottom: 1px solid var(--surface-border); padding-bottom: 0.8rem;">
-                            <strong>MLOps with AWS[cite: 1]</strong>
-                            <div style="font-size: 0.85rem; color: var(--text-sub);">Infosys Springboard • Docker & Cloud Pipelines[cite: 1]</div>
+                            <strong>MLOps with AWS</strong>
+                            <div style="font-size: 0.85rem; color: var(--text-sub);">Infosys Springboard • Docker, DevOps & Cloud Pipelines</div>
                         </li>
                         <li>
-                            <strong>Google Business Intelligence[cite: 1]</strong>
-                            <div style="font-size: 0.85rem; color: var(--text-sub);">Coursera • SQL Analytics & Dashboard Design[cite: 1]</div>
+                            <strong>Google Business Intelligence</strong>
+                            <div style="font-size: 0.85rem; color: var(--text-sub);">Coursera • SQL Analytics & Visualization</div>
                         </li>
                     </ul>
                 </div>
@@ -657,41 +717,53 @@
     <div id="modal1" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal1')">&times;</span>
-            <h2 style="margin-bottom: 1rem; color: var(--primary);">Privacy-Preserving RPL Intrusion Detection[cite: 1]</h2>
-            <p style="color: var(--text-sub); margin-bottom: 1rem;">Full technical breakdown of the graduate thesis research[cite: 1].</p>
-            <ul style="padding-left: 1.2rem; color: var(--text-main);">
-                <li>Designed hybrid aggregation strategies using <strong>FedAvgM</strong>, <strong>FedProx</strong>, and <strong>Best-K client selection</strong> algorithms[cite: 1].</li>
-                <li>Mitigated data-skew constraints associated with severe non-IID distributions across distributed client nodes[cite: 1].</li>
-                <li>Built simulation architectures in PyTorch and Flower without centralization of sensitive edge data[cite: 1].</li>
+            <h2 style="margin-bottom: 1rem; color: var(--primary);">Privacy-Preserving RPL Intrusion Detection</h2>
+            <ul style="padding-left: 1.2rem; color: var(--text-main); margin-bottom: 1.5rem;">
+                <li>Designed hybrid aggregation strategies using <strong>FedAvgM</strong>, <strong>FedProx</strong>, and <strong>Best-K client selection</strong> algorithms.</li>
+                <li>Handled non-IID data distribution and network bottlenecks in distributed IoT client nodes.</li>
+                <li>Built simulation architectures in PyTorch and Flower without centralizing edge data.</li>
             </ul>
+            <a href="https://github.com/Aakash001Chouhan/FL_INTRUSION_DETECTION_in_IOT" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> View GitHub Repository</a>
         </div>
     </div>
 
     <div id="modal2" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal2')">&times;</span>
-            <h2 style="margin-bottom: 1rem; color: var(--primary);">Electricity Consumption Predictive Engine[cite: 1]</h2>
-            <p style="color: var(--text-sub); margin-bottom: 1rem;">Time-Series Analysis & Statistical Modeling[cite: 1].</p>
-            <ul style="padding-left: 1.2rem; color: var(--text-main);">
-                <li>Engineered time-series pipelines for demand analysis and accurate pattern recognition[cite: 1].</li>
-                <li>Applied advanced data cleaning, missing-value imputations, and feature creation (lagged variables, rolling windows)[cite: 1].</li>
+            <h2 style="margin-bottom: 1rem; color: var(--primary);">Personal AI Assistant</h2>
+            <ul style="padding-left: 1.2rem; color: var(--text-main); margin-bottom: 1.5rem;">
+                <li>Architected an AI assistant framework integrating LLMs with task automation capabilities.</li>
+                <li>Designed prompt engineering strategies to process natural language inputs into actionable context.</li>
             </ul>
+            <a href="https://github.com/Aakash001Chouhan/personal-ai-assistant" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> View GitHub Repository</a>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal3')">&times;</span>
+            <h2 style="margin-bottom: 1rem; color: var(--primary);">Electricity Consumption Forecasting Framework</h2>
+            <ul style="padding-left: 1.2rem; color: var(--text-main); margin-bottom: 1.5rem;">
+                <li>Built predictive models for demand forecasting and grid management using multi-model machine learning.</li>
+                <li>Applied time-series pre-processing, rolling statistics, and feature engineering.</li>
+            </ul>
+            <a href="https://github.com/Aakash001Chouhan/Predicting-Electricity-Consumption-Using-a-MultiModel-Machine-Learning-Framework" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> View GitHub Repository</a>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
         <div class="social-grid">
-            <a href="https://github.com/Aakash001Chouhan" target="_blank" class="social-btn"><i class="fab fa-github"></i>[cite: 1]</a>
-            <a href="https://linkedin.com/in/aakash-chouhan" target="_blank" class="social-btn"><i class="fab fa-linkedin"></i>[cite: 1]</a>
-            <a href="mailto:aakashchouhan0802@gmail.com" class="social-btn"><i class="fas fa-envelope"></i>[cite: 1]</a>
+            <a href="https://github.com/Aakash001Chouhan" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/aakash-chouhan/" target="_blank" class="social-btn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:aakashchouhan0802@gmail.com" class="social-btn"><i class="fas fa-envelope"></i></a>
         </div>
-        <p style="color: var(--text-sub); font-size: 0.9rem;">© 2026 Aakash Chouhan[cite: 1]. Hosted via GitHub Pages.</p>
+        <p style="color: var(--text-sub); font-size: 0.9rem;">© 2026 Aakash Chouhan. Hosted via GitHub Pages.</p>
     </footer>
 
-    <!-- Interactive Canvas & Interactive Scripts -->
+    <!-- Interactive Scripts -->
     <script>
-        // Particle Background Canvas Logic
+        // Particle Background Logic
         const canvas = document.getElementById('canvas-bg');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -736,7 +808,7 @@
         }
         animateParticles();
 
-        // Skill Filtering Logic
+        // Skill Filter Functionality
         function filterSkills(category) {
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
@@ -750,7 +822,7 @@
             });
         }
 
-        // Modal Controls
+        // Modal Popups
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
     </script>
