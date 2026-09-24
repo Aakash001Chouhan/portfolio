@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aakash Chouhan | AI & ML Engineering Portfolio</title>
     
-    
     <!-- Inline SVG Favicon ("AC" initials) -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%230b0f19'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='42' fill='%233b82f6'>AC</text></svg>">
 
@@ -19,13 +18,15 @@
             --bg: #030712;
             --surface-1: #0b0f19;
             --surface-2: #111827;
-            --surface-border: #1f293d;
+            --surface-border: rgba(255, 255, 255, 0.1);
             --primary: #3b82f6;
             --primary-glow: rgba(59, 130, 246, 0.4);
             --accent: #8b5cf6;
             --text-main: #f9fafb;
             --text-sub: #9ca3af;
             --card-hover: rgba(255, 255, 255, 0.03);
+            --mouse-x: 50%;
+            --mouse-y: 50%;
         }
 
         * {
@@ -33,6 +34,7 @@
             padding: 0;
             box-sizing: border-box;
             scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -41,6 +43,20 @@
             color: var(--text-main);
             line-height: 1.7;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Dynamic Cursor Glow Backdrop */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.12), transparent 40%);
+            z-index: 0;
+            pointer-events: none;
         }
 
         #canvas-bg {
@@ -56,29 +72,31 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1.5rem;
             position: relative;
             z-index: 1;
         }
 
-        /* Glassmorphism Navbar */
+        /* Responsive Navigation Bar */
         nav {
             position: fixed;
-            top: 1.5rem;
+            top: 1rem;
             left: 50%;
             transform: translateX(-50%);
-            width: 90%;
+            width: 92%;
             max-width: 1100px;
             background: rgba(11, 15, 25, 0.85);
             backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--surface-border);
             border-radius: 99px;
             z-index: 100;
-            padding: 0.8rem 2rem;
+            padding: 0.8rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
         }
 
         .logo {
@@ -87,6 +105,22 @@
             color: var(--text-main);
             text-decoration: none;
             letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-badge {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .logo span {
@@ -96,7 +130,7 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.8rem;
         }
 
         .nav-links a {
@@ -111,12 +145,24 @@
             color: var(--primary);
         }
 
+        /* Mobile Controls & Hamburger Menu */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 0.2rem;
+        }
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             padding-top: 6rem;
+            padding-bottom: 2rem;
         }
 
         .hero-badge {
@@ -124,7 +170,7 @@
             align-items: center;
             gap: 0.5rem;
             background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.25);
             color: var(--primary);
             padding: 0.4rem 1rem;
             border-radius: 99px;
@@ -134,7 +180,7 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-size: clamp(2.4rem, 6vw, 4.5rem);
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 1.5rem;
@@ -144,51 +190,60 @@
         }
 
         .hero p {
-            font-size: 1.25rem;
+            font-size: clamp(1rem, 2vw, 1.25rem);
             color: var(--text-sub);
             max-width: 750px;
             margin-bottom: 2.5rem;
         }
 
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.5rem;
-            margin-top: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-top: 3.5rem;
         }
 
         .stat-card {
             background: var(--surface-1);
             border: 1px solid var(--surface-border);
-            padding: 1.5rem;
+            padding: 1.2rem;
             border-radius: 16px;
             text-align: center;
+            backdrop-filter: blur(8px);
         }
 
         .stat-number {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: var(--primary);
             margin-bottom: 0.2rem;
         }
 
         .stat-label {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-sub);
         }
 
-        /* Buttons */
+        /* Interactive Buttons */
         .btn {
-            padding: 0.9rem 1.8rem;
+            padding: 0.85rem 1.6rem;
             border-radius: 12px;
             font-weight: 600;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.6rem;
             transition: all 0.3s ease;
             cursor: pointer;
             border: none;
+            font-size: 0.95rem;
         }
 
         .btn-primary {
@@ -198,7 +253,7 @@
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             box-shadow: 0 15px 35px var(--primary-glow);
         }
 
@@ -213,32 +268,45 @@
             border-color: var(--primary);
         }
 
-        /* Skills Section */
+        /* Skills Filterable Section */
+        section {
+            padding: 5rem 0;
+        }
+
         .section-header {
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
 
         .section-title {
-            font-size: 2.2rem;
+            font-size: clamp(1.8rem, 4vw, 2.2rem);
             font-weight: 700;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
         }
 
         .filter-container {
             display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
+            gap: 0.6rem;
+            overflow-x: auto;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1.5rem;
+            scrollbar-width: none;
+        }
+
+        .filter-container::-webkit-scrollbar {
+            display: none;
         }
 
         .filter-btn {
+            white-space: nowrap;
             background: var(--surface-1);
             border: 1px solid var(--surface-border);
             color: var(--text-sub);
-            padding: 0.5rem 1.2rem;
-            border-radius: 8px;
+            padding: 0.5rem 1.1rem;
+            border-radius: 99px;
             cursor: pointer;
             transition: 0.3s;
+            font-size: 0.85rem;
+            font-weight: 500;
         }
 
         .filter-btn.active, .filter-btn:hover {
@@ -250,25 +318,25 @@
         .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
+            gap: 1.2rem;
         }
 
         .skill-box {
             background: var(--surface-1);
             border: 1px solid var(--surface-border);
             border-radius: 16px;
-            padding: 1.8rem;
-            transition: 0.3s ease;
+            padding: 1.5rem;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s;
+            transform-style: preserve-3d;
         }
 
         .skill-box:hover {
             border-color: var(--primary);
-            transform: translateY(-5px);
             background: var(--card-hover);
         }
 
         .skill-box h3 {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
@@ -279,7 +347,7 @@
         .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
 
         .tag {
@@ -287,38 +355,38 @@
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
             color: #d1d5db;
-            padding: 0.3rem 0.7rem;
+            padding: 0.25rem 0.6rem;
             border-radius: 6px;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
         }
 
-        /* Projects Section */
+        /* Interactive 3D Projects Cards */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
         }
 
         .project-card {
             background: var(--surface-1);
             border: 1px solid var(--surface-border);
             border-radius: 20px;
-            padding: 2.2rem;
+            padding: 1.8rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
             overflow: hidden;
-            transition: 0.3s ease;
+            transition: transform 0.2s ease, border-color 0.3s ease;
+            transform-style: preserve-3d;
         }
 
         .project-card:hover {
             border-color: var(--accent);
-            transform: translateY(-6px);
         }
 
         .project-type {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-family: 'JetBrains Mono', monospace;
             color: var(--accent);
             text-transform: uppercase;
@@ -327,13 +395,13 @@
         }
 
         .project-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
         }
 
         .project-card p {
             color: var(--text-sub);
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             margin-bottom: 1.5rem;
         }
 
@@ -342,6 +410,8 @@
             justify-content: space-between;
             align-items: center;
             margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .read-more {
@@ -352,16 +422,38 @@
             align-items: center;
             gap: 0.4rem;
             cursor: pointer;
+            font-size: 0.9rem;
         }
 
         .repo-link {
             color: var(--text-sub);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             transition: 0.3s;
+            padding: 0.3rem;
         }
 
         .repo-link:hover {
             color: var(--primary);
+        }
+
+        /* Publication Card */
+        .pub-card {
+            background: linear-gradient(135deg, var(--surface-1), var(--surface-2));
+            border: 1px solid var(--surface-border);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .pub-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            border-radius: 20px 0 0 20px;
         }
 
         /* Credentials Styles */
@@ -382,7 +474,7 @@
 
         .cert-link {
             color: var(--primary);
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -391,12 +483,7 @@
             margin-top: 0.3rem;
         }
 
-        .cert-link:hover {
-            color: #93c5fd;
-            text-decoration: underline;
-        }
-
-        /* Modals */
+        /* Mobile Drawers & Bottom Modals */
         .modal {
             display: none;
             position: fixed;
@@ -405,62 +492,52 @@
             width: 100%;
             height: 100%;
             background: rgba(3, 7, 18, 0.85);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             z-index: 1000;
             justify-content: center;
             align-items: center;
-            padding: 1.5rem;
+            padding: 1rem;
         }
 
         .modal-content {
             background: var(--surface-1);
             border: 1px solid var(--surface-border);
             border-radius: 20px;
-            max-width: 700px;
+            max-width: 650px;
             width: 100%;
-            padding: 2.5rem;
+            padding: 2rem;
             position: relative;
             max-height: 85vh;
             overflow-y: auto;
+            animation: modalUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .close-modal {
             position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            font-size: 1.5rem;
+            top: 1.2rem;
+            right: 1.2rem;
+            font-size: 1.4rem;
             color: var(--text-sub);
             cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
         }
 
-        section {
-            padding: 8rem 0;
-        }
-
-        /* Publication Card */
-        .pub-card {
-            background: linear-gradient(135deg, var(--surface-1), var(--surface-2));
-            border: 1px solid var(--surface-border);
-            border-radius: 20px;
-            padding: 2.5rem;
-            position: relative;
-        }
-
-        .pub-card::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 5px;
-            background: linear-gradient(to bottom, var(--primary), var(--accent));
-            border-radius: 20px 0 0 20px;
-        }
-
-        /* Footer */
+        /* Footer & Social Grid */
         footer {
             border-top: 1px solid var(--surface-border);
-            padding: 4rem 0 2rem;
+            padding: 3rem 0 2rem;
             background: var(--surface-1);
             text-align: center;
         }
@@ -468,13 +545,13 @@
         .social-grid {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
         }
 
         .social-btn {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             background: var(--surface-2);
             border: 1px solid var(--surface-border);
@@ -482,7 +559,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             transition: 0.3s;
             text-decoration: none;
         }
@@ -492,21 +569,104 @@
             border-color: var(--primary);
             transform: translateY(-3px);
         }
+
+        /* Floating Quick Action FAB for Mobile */
+        .mobile-fab {
+            display: none;
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 10px 25px var(--primary-glow);
+            z-index: 99;
+            text-decoration: none;
+        }
+
+        /* Mobile Layout & Adaptive Styling */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 5rem;
+                left: 50%;
+                transform: translateX(-50%) translateY(-20px);
+                width: 92%;
+                background: var(--surface-1);
+                border: 1px solid var(--surface-border);
+                border-radius: 20px;
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 1.2rem;
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+            }
+
+            .nav-links.active {
+                opacity: 1;
+                pointer-events: auto;
+                transform: translateX(-50%) translateY(0);
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .mobile-fab {
+                display: flex;
+            }
+
+            .modal {
+                align-items: flex-end;
+                padding: 0;
+            }
+
+            .modal-content {
+                border-radius: 24px 24px 0 0;
+                max-height: 80vh;
+            }
+        }
     </style>
 </head>
 <body>
 
     <canvas id="canvas-bg"></canvas>
 
+    <!-- Floating Action Button for Mobile -->
+    <a href="mailto:aakashchouhan0802@gmail.com" class="mobile-fab" title="Contact Me">
+        <i class="fas fa-paper-plane"></i>
+    </a>
+
     <!-- Navigation -->
     <nav>
-        <a href="#" class="logo">Aakash <span>Chouhan</span></a>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#publications">Research</a></li>
-            <li><a href="#education">Education</a></li>
+        <a href="#" class="logo">
+            <span class="logo-badge">AC</span>
+            Aakash <span>Chouhan</span>
+        </a>
+        <button class="mobile-toggle" onclick="toggleNav()" aria-label="Toggle Navigation Menu">
+            <i class="fas fa-bars" id="nav-icon"></i>
+        </button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#about" onclick="closeNav()">About</a></li>
+            <li><a href="#skills" onclick="closeNav()">Skills</a></li>
+            <li><a href="#projects" onclick="closeNav()">Projects</a></li>
+            <li><a href="#publications" onclick="closeNav()">Research</a></li>
+            <li><a href="#education" onclick="closeNav()">Education</a></li>
         </ul>
     </nav>
 
@@ -519,7 +679,7 @@
                 <h1>AAKASH CHOUHAN</h1>
                 <p>Architecting secure, decentralized machine learning systems, privacy-preserving IoT solutions, and Generative AI frameworks. Specializing in Federated Learning, Natural Language Processing, MLOps, and Cyber Security.</p>
                 
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <div class="hero-actions">
                     <a href="https://github.com/Aakash001Chouhan" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> GitHub Profile</a>
                     <a href="https://www.linkedin.com/in/aakash-chouhan/" target="_blank" class="btn btn-secondary"><i class="fab fa-linkedin"></i> LinkedIn</a>
                     <a href="mailto:aakashchouhan0802@gmail.com" class="btn btn-secondary"><i class="fas fa-envelope"></i> Email Me</a>
@@ -546,19 +706,18 @@
         <section id="skills">
             <div class="section-header">
                 <h2 class="section-title">Technical Skills & Expertise</h2>
-                <p style="color: var(--text-sub);">Filter skills by domain</p>
+                <p style="color: var(--text-sub); font-size: 0.9rem;">Swipe horizontally or tap categories to filter</p>
             </div>
 
             <div class="filter-container">
-                <button class="filter-btn active" onclick="filterSkills('all')">All Skills</button>
-                <button class="filter-btn" onclick="filterSkills('ai')">Gen AI & NLP</button>
-                <button class="filter-btn" onclick="filterSkills('ml')">ML, Security & Edge</button>
-                <button class="filter-btn" onclick="filterSkills('bigdata')">Big Data & IoT</button>
-                <button class="filter-btn" onclick="filterSkills('ops')">MLOps & Cloud</button>
+                <button class="filter-btn active" onclick="filterSkills('all', this)">All Skills</button>
+                <button class="filter-btn" onclick="filterSkills('ai', this)">Gen AI & NLP</button>
+                <button class="filter-btn" onclick="filterSkills('ml', this)">ML, Security & Edge</button>
+                <button class="filter-btn" onclick="filterSkills('bigdata', this)">Big Data & IoT</button>
+                <button class="filter-btn" onclick="filterSkills('ops', this)">MLOps & Cloud</button>
             </div>
 
             <div class="skills-container">
-                
                 <div class="skill-box" data-category="ai">
                     <h3><i class="fas fa-robot"></i> Generative AI & NLP</h3>
                     <div class="tags">
@@ -566,7 +725,7 @@
                         <span class="tag">Natural Language Processing (NLP)</span>
                         <span class="tag">RAG Architectures</span>
                         <span class="tag">LLM Integration</span>
-                        <span class="tag">Few-Shot / Chain-of-Thought</span>
+                        <span class="tag">Few-Shot Learning</span>
                     </div>
                 </div>
 
@@ -603,7 +762,7 @@
                 </div>
 
                 <div class="skill-box" data-category="ml">
-                    <h3><i class="fas fa-brain"></i> Machine Learning & Computer Vision</h3>
+                    <h3><i class="fas fa-brain"></i> Machine Learning & Vision</h3>
                     <div class="tags">
                         <span class="tag">PyTorch</span>
                         <span class="tag">TensorFlow</span>
@@ -623,197 +782,189 @@
                         <span class="tag">Full Stack Development</span>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- Projects Section -->
+        <!-- Projects Section with 3D Tilt FX -->
         <section id="projects">
             <div class="section-header">
                 <h2 class="section-title">Featured Projects</h2>
-                <p style="color: var(--text-sub);">Click "Explore Deep Dive" for detailed specs or the GitHub icon to view source code.</p>
+                <p style="color: var(--text-sub); font-size: 0.9rem;">Tap card details for deep-dive specifications or GitHub repo links.</p>
             </div>
 
             <div class="projects-grid">
-                
-                <div class="project-card">
+                <div class="project-card tilt-card">
                     <div>
                         <div class="project-type">Graduate Thesis Research</div>
                         <h3>Privacy-Preserving RPL Intrusion Detection</h3>
                         <p>Decentralized Intrusion Detection System built for IoT edge devices operating under severe routing attacks and non-IID data distributions.</p>
                     </div>
-                    <div class="tags" style="margin-bottom: 1.5rem;">
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">Flower</span>
-                        <span class="tag">IoT Security</span>
-                    </div>
-                    <div class="card-actions">
-                        <a class="read-more" onclick="openModal('modal1')">Explore Deep Dive <i class="fas fa-arrow-right"></i></a>
-                        <a href="https://github.com/Aakash001Chouhan/FL_INTRUSION_DETECTION_in_IOT" target="_blank" class="repo-link" title="View Source Code"><i class="fab fa-github"></i></a>
+                    <div>
+                        <div class="tags" style="margin-bottom: 1.2rem;">
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">Flower</span>
+                            <span class="tag">IoT Security</span>
+                        </div>
+                        <div class="card-actions">
+                            <a class="read-more" onclick="openModal('modal1')">Explore Deep Dive <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://github.com/Aakash001Chouhan/FL_INTRUSION_DETECTION_in_IOT" target="_blank" class="repo-link" title="View Source Code"><i class="fab fa-github"></i></a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card tilt-card">
                     <div>
                         <div class="project-type">OFFLINE NLP AI</div>
                         <h3>Personal AI Assistant</h3>
                         <p>Intelligent personal assistant integrating Generative AI workflows, prompt engineering, and localized automation pipelines.</p>
                     </div>
-                    <div class="tags" style="margin-bottom: 1.5rem;">
-                        <span class="tag">Python</span>
-                        <span class="tag">NLP</span>
-                    </div>
-                    <div class="card-actions">
-                        <a class="read-more" onclick="openModal('modal2')">Explore Deep Dive <i class="fas fa-arrow-right"></i></a>
-                        <a href="https://github.com/Aakash001Chouhan/personal-ai-assistant" target="_blank" class="repo-link" title="View Source Code"><i class="fab fa-github"></i></a>
+                    <div>
+                        <div class="tags" style="margin-bottom: 1.2rem;">
+                            <span class="tag">Python</span>
+                            <span class="tag">NLP</span>
+                        </div>
+                        <div class="card-actions">
+                            <a class="read-more" onclick="openModal('modal2')">Explore Deep Dive <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://github.com/Aakash001Chouhan/personal-ai-assistant" target="_blank" class="repo-link" title="View Source Code"><i class="fab fa-github"></i></a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card tilt-card">
                     <div>
                         <div class="project-type">Big Data & Time-Series</div>
                         <h3>Electricity Consumption Forecasting</h3>
                         <p>Multi-model machine learning framework engineering forecasts for regional and household power consumption trends.</p>
                     </div>
-                    <div class="tags" style="margin-bottom: 1.5rem;">
-                        <span class="tag">Python</span>
-                        <span class="tag">Scikit-Learn</span>
-                        <span class="tag">Pandas</span>
-                    </div>
-                    <div class="card-actions">
-                        <a class="read-more" onclick="openModal('modal3')">Explore Deep Dive <i class="fas fa-arrow-right"></i></a>
-                        <a href="https://github.com/Aakash001Chouhan/Predicting-Electricity-Consumption-Using-a-MultiModel-Machine-Learning-Framework" target="_blank" class="repo-link" title="View Source Code"><i class="fab fa-github"></i></a>
+                    <div>
+                        <div class="tags" style="margin-bottom: 1.2rem;">
+                            <span class="tag">Python</span>
+                            <span class="tag">Scikit-Learn</span>
+                            <span class="tag">Pandas</span>
+                        </div>
+                        <div class="card-actions">
+                            <a class="read-more" onclick="openModal('modal3')">Explore Deep Dive <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://github.com/Aakash001Chouhan/Predicting-Electricity-Consumption-Using-a-MultiModel-Machine-Learning-Framework" target="_blank" class="repo-link" title="View Source Code"><i class="fab fa-github"></i></a>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- Publications -->
+        <!-- Research Publications -->
         <section id="publications">
             <div class="section-header">
                 <h2 class="section-title">Research Publications</h2>
             </div>
             <div class="pub-card">
-                <div style="color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; margin-bottom: 0.5rem;">JOURNAL PUBLICATION</div>
-                <h3 style="font-size: 1.5rem; margin-bottom: 0.8rem;">Privacy-Preserving Intrusion Detection for IoT Networks Using Federated Learning</h3>
-                <p style="color: var(--text-sub); margin-bottom: 1rem;"><strong>Authors:</strong> Aakash Chouhan, Dr. Mukul Shukla, Dr. Puja Gupta</p>
-                <p style="font-size: 0.95rem; color: var(--text-main); margin-bottom: 1.2rem;">
+                <div style="color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; margin-bottom: 0.5rem;">JOURNAL PUBLICATION</div>
+                <h3 style="font-size: clamp(1.2rem, 3vw, 1.5rem); margin-bottom: 0.8rem;">Privacy-Preserving Intrusion Detection for IoT Networks Using Federated Learning</h3>
+                <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 0.8rem;"><strong>Authors:</strong> Aakash Chouhan, Dr. Mukul Shukla, Dr. Puja Gupta</p>
+                <p style="font-size: 0.92rem; color: var(--text-main); margin-bottom: 1.2rem;">
                     Published in <em>International Journal for Multidisciplinary Research (IJFMR)</em>, Vol. 8, Issue 3 (May 10, 2026). Explores decentralized edge learning to prevent cyber attacks on resource-constrained IoT systems without centralizing data.
                 </p>
-                <a href="https://www.ijfmr.com/research-paper.php?id=78035" target="_blank" class="btn btn-secondary" style="padding: 0.6rem 1.2rem; font-size: 0.85rem;"><i class="fas fa-external-link-alt"></i> View Published Paper</a>
+                <a href="https://www.ijfmr.com/research-paper.php?id=78035" target="_blank" class="btn btn-secondary" style="padding: 0.6rem 1.2rem; font-size: 0.85rem; width: auto;"><i class="fas fa-external-link-alt"></i> View Published Paper</a>
             </div>
         </section>
 
-        <!-- Education & Certifications Timeline -->
+        <!-- Education & Credentials Timeline -->
         <section id="education">
             <div class="section-header">
-                <h2 class="section-title">Education & Verified Credentials</h2>
+                <h2 class="section-title">Education & Credentials</h2>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                
-                <div style="background: var(--surface-1); border: 1px solid var(--surface-border); border-radius: 16px; padding: 2rem;">
-                    <h3 style="color: var(--primary); margin-bottom: 1.5rem;"><i class="fas fa-graduation-cap"></i> Academic Background</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem;">
+                <div style="background: var(--surface-1); border: 1px solid var(--surface-border); border-radius: 16px; padding: 1.5rem;">
+                    <h3 style="color: var(--primary); margin-bottom: 1.2rem; font-size: 1.1rem;"><i class="fas fa-graduation-cap"></i> Academic Background</h3>
                     
-                    <div style="margin-bottom: 1.5rem;">
-                        <h4>M.Tech in Information Technology</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-sub);">SGSITS, Indore (2024–2026) | CGPA: 8.23</p>
+                    <div style="margin-bottom: 1.2rem;">
+                        <h4 style="font-size: 1rem;">M.Tech in Information Technology</h4>
+                        <p style="font-size: 0.82rem; color: var(--text-sub);">SGSITS, Indore (2024–2026) | CGPA: 8.23</p>
                     </div>
 
-                    <div style="margin-bottom: 1.5rem;">
-                        <h4>B.Tech in Computer Science</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-sub);">Medi-Caps University, Indore (2021–2024) | CGPA: 7.69</p>
+                    <div style="margin-bottom: 1.2rem;">
+                        <h4 style="font-size: 1rem;">B.Tech in Computer Science</h4>
+                        <p style="font-size: 0.82rem; color: var(--text-sub);">Medi-Caps University, Indore (2021–2024) | CGPA: 7.69</p>
                     </div>
 
                     <div>
-                        <h4>Diploma in Electrical Engineering</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-sub);">Shri Vaishnav Polytechnic College (2018–2021) | CGPA: 7.21</p>
+                        <h4 style="font-size: 1rem;">Diploma in Electrical Engineering</h4>
+                        <p style="font-size: 0.82rem; color: var(--text-sub);">Shri Vaishnav Polytechnic College (2018–2021) | CGPA: 7.21</p>
                     </div>
                 </div>
 
-                <div style="background: var(--surface-1); border: 1px solid var(--surface-border); border-radius: 16px; padding: 2rem;">
-                    <h3 style="color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-certificate"></i> Certifications</h3>
-                    <div style="display: flex; flex-direction: column; gap: 1rem;">
-                        
+                <div style="background: var(--surface-1); border: 1px solid var(--surface-border); border-radius: 16px; padding: 1.5rem;">
+                    <h3 style="color: var(--accent); margin-bottom: 1.2rem; font-size: 1.1rem;"><i class="fas fa-certificate"></i> Certifications</h3>
+                    <div style="display: flex; flex-direction: column; gap: 0.9rem;">
                         <div class="cert-item">
                             <div>
-                                <strong>Google Advanced Data Analytics</strong>
-                                <div style="font-size: 0.85rem; color: var(--text-sub);">Coursera • ML & Python Analytics</div>
+                                <strong style="font-size: 0.95rem;">Google Advanced Data Analytics</strong>
+                                <div style="font-size: 0.8rem; color: var(--text-sub);">Coursera • ML & Python Analytics</div>
                                 <a href="https://coursera.org/verify/professional-cert/F6A3DWWCY28R" target="_blank" class="cert-link"><i class="fas fa-external-link-alt"></i> Verify Certificate</a>
                             </div>
                         </div>
 
                         <div class="cert-item">
                             <div>
-                                <strong>Google Business Intelligence</strong>
-                                <div style="font-size: 0.85rem; color: var(--text-sub);">Coursera • SQL Analytics & Visualization</div>
+                                <strong style="font-size: 0.95rem;">Google Business Intelligence</strong>
+                                <div style="font-size: 0.8rem; color: var(--text-sub);">Coursera • SQL Analytics & Visualization</div>
                                 <a href="https://coursera.org/verify/professional-cert/99KDC7HZRZ7H" target="_blank" class="cert-link"><i class="fas fa-external-link-alt"></i> Verify Certificate</a>
                             </div>
                         </div>
 
                         <div class="cert-item">
                             <div>
-                                <strong>Introduction to Artificial Intelligence (AI)</strong>
-                                <div style="font-size: 0.85rem; color: var(--text-sub);">IBM • Generative AI & ML Concepts</div>
+                                <strong style="font-size: 0.95rem;">Introduction to Artificial Intelligence (AI)</strong>
+                                <div style="font-size: 0.8rem; color: var(--text-sub);">IBM • Generative AI & ML Concepts</div>
                                 <a href="https://coursera.org/verify/XM3YZEE54NTM" target="_blank" class="cert-link"><i class="fas fa-external-link-alt"></i> Verify Certificate</a>
                             </div>
                         </div>
 
                         <div class="cert-item">
                             <div>
-                                <strong>MLOps with AWS</strong>
-                                <div style="font-size: 0.85rem; color: var(--text-sub);">Udemy • Docker, DevOps & Cloud Pipelines</div>
+                                <strong style="font-size: 0.95rem;">MLOps with AWS</strong>
+                                <div style="font-size: 0.8rem; color: var(--text-sub);">Udemy • Docker, DevOps & Cloud Pipelines</div>
                                 <a href="https://ude.my/UC-21e9b20c-1155-416a-87fc-40e4853e5d7a" target="_blank" class="cert-link"><i class="fas fa-external-link-alt"></i> Verify Certificate</a>
                             </div>
                         </div>
-
-                        <div class="cert-item">
-                            <div>
-                                <strong>Learning Full Stack Development</strong>
-                                <div style="font-size: 0.85rem; color: var(--text-sub);">Infosys Springboard • Web Engineering & Architecture</div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
-
             </div>
         </section>
 
     </div>
 
-    <!-- Modals for Deep Dives -->
-    <div id="modal1" class="modal">
+    <!-- Modals / Mobile Bottom Sheets -->
+    <div id="modal1" class="modal" onclick="closeModalOnBg(event, 'modal1')">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal1')">&times;</span>
-            <h2 style="margin-bottom: 1rem; color: var(--primary);">Privacy-Preserving RPL Intrusion Detection</h2>
-            <ul style="padding-left: 1.2rem; color: var(--text-main); margin-bottom: 1.5rem;">
-                <li>Designed hybrid aggregation strategies using <strong>FedAvgM</strong>, <strong>FedProx</strong>, and <strong>Best-K client selection</strong> algorithms.</li>
-                <li>Handled non-IID data distribution and network bottlenecks in distributed IoT client nodes.</li>
+            <h2 style="margin-bottom: 1rem; color: var(--primary); font-size: 1.3rem;">Privacy-Preserving RPL Intrusion Detection</h2>
+            <ul style="padding-left: 1.2rem; color: var(--text-main); margin-bottom: 1.5rem; font-size: 0.92rem;">
+                <li style="margin-bottom: 0.5rem;">Designed hybrid aggregation strategies using <strong>FedAvgM</strong>, <strong>FedProx</strong>, and <strong>Best-K client selection</strong> algorithms.</li>
+                <li style="margin-bottom: 0.5rem;">Handled non-IID data distribution and network bottlenecks in distributed IoT client nodes.</li>
                 <li>Built simulation architectures in PyTorch and Flower without centralizing edge data.</li>
             </ul>
             <a href="https://github.com/Aakash001Chouhan/FL_INTRUSION_DETECTION_in_IOT" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> View GitHub Repository</a>
         </div>
     </div>
 
-    <div id="modal2" class="modal">
+    <div id="modal2" class="modal" onclick="closeModalOnBg(event, 'modal2')">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal2')">&times;</span>
-            <h2 style="margin-bottom: 1rem; color: var(--primary);">Personal AI Assistant</h2>
-            <ul style="padding-left: 1.2rem; color: var(--text-main); margin-bottom: 1.5rem;">
-                <li>Architected an AI assistant framework integrating LLMs with task automation capabilities.</li>
+            <h2 style="margin-bottom: 1rem; color: var(--primary); font-size: 1.3rem;">Personal AI Assistant</h2>
+            <ul style="padding-left: 1.2rem; color: var(--text-main); margin-bottom: 1.5rem; font-size: 0.92rem;">
+                <li style="margin-bottom: 0.5rem;">Architected an AI assistant framework integrating LLMs with task automation capabilities.</li>
                 <li>Designed prompt engineering strategies to process natural language inputs into actionable context.</li>
             </ul>
             <a href="https://github.com/Aakash001Chouhan/personal-ai-assistant" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> View GitHub Repository</a>
         </div>
     </div>
 
-    <div id="modal3" class="modal">
+    <div id="modal3" class="modal" onclick="closeModalOnBg(event, 'modal3')">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal3')">&times;</span>
-            <h2 style="margin-bottom: 1rem; color: var(--primary);">Electricity Consumption Forecasting Framework</h2>
-            <ul style="padding-left: 1.2rem; color: var(--text-main); margin-bottom: 1.5rem;">
-                <li>Built predictive models for demand forecasting and grid management using multi-model machine learning.</li>
+            <h2 style="margin-bottom: 1rem; color: var(--primary); font-size: 1.3rem;">Electricity Consumption Forecasting</h2>
+            <ul style="padding-left: 1.2rem; color: var(--text-main); margin-bottom: 1.5rem; font-size: 0.92rem;">
+                <li style="margin-bottom: 0.5rem;">Built predictive models for demand forecasting and grid management using multi-model machine learning.</li>
                 <li>Applied time-series pre-processing, rolling statistics, and feature engineering.</li>
             </ul>
             <a href="https://github.com/Aakash001Chouhan/Predicting-Electricity-Consumption-Using-a-MultiModel-Machine-Learning-Framework" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> View GitHub Repository</a>
@@ -827,12 +978,77 @@
             <a href="https://www.linkedin.com/in/aakash-chouhan/" target="_blank" class="social-btn"><i class="fab fa-linkedin"></i></a>
             <a href="mailto:aakashchouhan0802@gmail.com" class="social-btn"><i class="fas fa-envelope"></i></a>
         </div>
-        <p style="color: var(--text-sub); font-size: 0.9rem;">© 2026 Aakash Chouhan. Hosted via GitHub Pages.</p>
+        <p style="color: var(--text-sub); font-size: 0.85rem;">© 2026 Aakash Chouhan. Hosted via GitHub Pages.</p>
     </footer>
 
     <!-- Interactive Scripts -->
     <script>
-        // Particle Background Logic
+        // Track Mouse Glow Ambient Accent
+        window.addEventListener('mousemove', (e) => {
+            document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+            document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+        });
+
+        // Interactive 3D Card Tilt Effect for Desktop/Tablet
+        const cards = document.querySelectorAll('.tilt-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                if (window.innerWidth < 768) return;
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (centerY - y) / 12;
+                const rotateY = (x - centerX) / 12;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+
+        // Mobile Nav Drawer Toggle
+        function toggleNav() {
+            const navLinks = document.getElementById('nav-links');
+            const icon = document.getElementById('nav-icon');
+            navLinks.classList.toggle('active');
+            if (navLinks.classList.contains('active')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-bars';
+            }
+        }
+
+        function closeNav() {
+            document.getElementById('nav-links').classList.remove('active');
+            document.getElementById('nav-icon').className = 'fas fa-bars';
+        }
+
+        // Skill Filter Logic
+        function filterSkills(category, btnElement) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            document.querySelectorAll('.skill-box').forEach(box => {
+                if (category === 'all' || box.getAttribute('data-category') === category) {
+                    box.style.display = 'block';
+                } else {
+                    box.style.display = 'none';
+                }
+            });
+        }
+
+        // Modals & Bottom Sheets
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        function closeModalOnBg(e, id) {
+            if (e.target.id === id) closeModal(id);
+        }
+
+        // Particle Canvas Background Loop
         const canvas = document.getElementById('canvas-bg');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -861,14 +1077,15 @@
                 if (this.y < 0) this.y = canvas.height;
             }
             draw() {
-                ctx.fillStyle = 'rgba(59, 130, 246, 0.3)';
+                ctx.fillStyle = 'rgba(59, 130, 246, 0.25)';
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
             }
         }
 
-        for (let i = 0; i < 60; i++) particles.push(new Particle());
+        const count = window.innerWidth < 768 ? 30 : 60;
+        for (let i = 0; i < count; i++) particles.push(new Particle());
 
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -876,24 +1093,6 @@
             requestAnimationFrame(animateParticles);
         }
         animateParticles();
-
-        // Skill Filter Functionality
-        function filterSkills(category) {
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            document.querySelectorAll('.skill-box').forEach(box => {
-                if (category === 'all' || box.getAttribute('data-category') === category) {
-                    box.style.display = 'block';
-                } else {
-                    box.style.display = 'none';
-                }
-            });
-        }
-
-        // Modal Popups
-        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
     </script>
 </body>
 </html>
